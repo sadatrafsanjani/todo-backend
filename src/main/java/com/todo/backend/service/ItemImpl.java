@@ -23,7 +23,7 @@ public class ItemImpl implements ItemService {
 
         List<ItemResponse> responses = new ArrayList<>();
 
-        itemRepository.findAll().forEach(item -> {
+        itemRepository.findAllOrderByIdDesc().forEach(item -> {
             responses.add(ItemResponse.convertToDto(item));
         });
 
@@ -66,6 +66,19 @@ public class ItemImpl implements ItemService {
     public ItemResponse save(ItemRequest request){
 
         Item item = itemRepository.save(ItemRequest.convertToModel(request));
+
+        return item != null ? ItemResponse.convertToDto(item) : null;
+    }
+
+    @Override
+    public ItemResponse update(long id, ItemRequest request){
+
+        Item item = itemRepository.getById(id);
+        item.setItemName(request.getItemName());
+        item.setDescription(request.getDescription());
+        item.setDate(request.getDate());
+        item.setStatus(request.isStatus());
+        item = itemRepository.save(item);
 
         return item != null ? ItemResponse.convertToDto(item) : null;
     }

@@ -14,6 +14,7 @@ public class ItemRequest {
     private String itemName;
     private String description;
     private LocalDate date;
+    private boolean status;
 
     public static Item convertToModel(ItemRequest request){
 
@@ -21,7 +22,7 @@ public class ItemRequest {
                 .itemName(request.getItemName())
                 .description(request.getDescription())
                 .date(request.getDate())
-                .status(false)
+                .status(request.isStatus())
                 .build();
     }
 }

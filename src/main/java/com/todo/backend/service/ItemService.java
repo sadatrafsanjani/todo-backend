@@ -11,4 +11,5 @@ public interface ItemService {
     List<ItemResponse> getAllIncompleteItems();
     ItemResponse getItemById(long id);
     ItemResponse save(ItemRequest request);
+    ItemResponse update(long id, ItemRequest request);
 }

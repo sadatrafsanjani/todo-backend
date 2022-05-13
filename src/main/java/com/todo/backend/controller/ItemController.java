@@ -93,7 +93,7 @@ public class ItemController {
         }
         else{
 
-            ItemResponse response = itemService.save(request);
+            ItemResponse response = itemService.update(id, request);
 
             if(response == null){
 
