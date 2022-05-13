@@ -1,9 +1,8 @@
 package com.todo.backend.dto;
 
 import com.todo.backend.model.Item;
-import com.todo.backend.utility.DateFormatter;
 import lombok.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +14,7 @@ public class ItemResponse {
     private Long id;
     private String itemName;
     private String description;
-    private Date date;
+    private LocalDate date;
     private boolean status;
 
     public static ItemResponse convertToDto(Item item){
@@ -24,7 +23,7 @@ public class ItemResponse {
                 .id(item.getId())
                 .itemName(item.getItemName())
                 .description(item.getDescription())
-                .date(DateFormatter.fromInstantToDate(item.getDate()))
+                .date(item.getDate())
                 .status(item.isStatus())
                 .build();
     }
