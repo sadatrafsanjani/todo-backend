@@ -3,7 +3,6 @@ package com.todo.backend.model;
 import lombok.*;
 import javax.persistence.*;
 import java.time.Instant;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "items")
